@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --ink-950: #0B0E14;
+  --ink-900: #12161F;
+  --ink-800: #1B2232;
+  --ink-700: #263044;
+  --slate-600: #475062;
+  --slate-500: #5B6577;
+  --fog-300: #9CA4B2;
+  --fog-200: #D3D7DF;
+  --paper-0: #FAF9F6;
+  --paper-50: #F3F1EC;
+  --paper-card: #FFFFFF;
+  --card-border: #E5E2D9;
+  --card-border-subtle: #EFECE5;
+  --text-primary: #121620;
+  --text-secondary: #485265;
+  --text-muted: #717B8C;
+  --amber-500: #B8813F;
+  --amber-600: #9C6B31;
+  --amber-700: #7E5424;
+  --amber-100: #F5EADB;
+  --amber-50: #FCF7F1;
+  --emerald-600: #0F766E;
+  --emerald-500: #10B981;
+  --emerald-100: #EDFAF4;
+  --rose-600: #BE123C;
+  --rose-500: #E11D48;
+  --rose-100: #FFF1F2;
+  --danger: #B4453D;
+  --focus-ring: rgba(184, 129, 63, 0.28);
+}
+
+.dark, :root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper-0: #0C1017;
+  --paper-50: #131822;
+  --paper-card: #181E2B;
+  --card-border: #262F3E;
+  --card-border-subtle: #1E2532;
+  --text-primary: #F0F2F5;
+  --text-secondary: #A0A7B6;
+  --text-muted: #707786;
+  --amber-100: #2E2316;
+  --amber-50: #1E170E;
+  --emerald-100: #0C281D;
+  --rose-100: #331318;
+  --focus-ring: rgba(184, 129, 63, 0.4);
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--paper-0);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
+  }
+
+  /* Universal user feedback and feel for buttons and interactive controls */
+  button:not(:disabled),
+  [role="button"] {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  button:not(:disabled):hover,
+  [role="button"]:hover {
+    filter: brightness(1.02);
+  }
+
+  button:not(:disabled):active,
+  [role="button"]:active {
+    transform: scale(0.985);
+    outline: none;
+  }
+
+  /* Modern stable inputs, selects, and textareas */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  select,
+  textarea {
+    transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--focus-ring);
+    border-color: var(--amber-500);
+  }
+}
+
+/* Brand Typography & Aesthetics inspired by the BOCASA geometric logo */
+.font-brand {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.font-brand-wide {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Signature BOCASA left-to-right gradient text */
+.bocasa-gradient-text {
+  background: linear-gradient(100deg, #12161F 0%, #263044 40%, #475062 75%, #717B8C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .bocasa-gradient-text {
+  background: linear-gradient(100deg, #FFFFFF 0%, #E2E8F0 35%, #CBD5E1 65%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tabular figures for non-wobbling prices and metrics */
+.tabular-numbers {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle card styling */
+.bocasa-card {
+  background-color: var(--paper-card);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 1px 3px 0 rgba(18, 22, 31, 0.03), 0 1px 2px -1px rgba(18, 22, 31, 0.02);
+}
+
+.bocasa-card:hover {
+  border-color: var(--card-border);
+}
+
